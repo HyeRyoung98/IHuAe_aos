@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ihuae_aos.databinding.FragmentDateBinding;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DateFragment extends Fragment {
@@ -18,6 +19,10 @@ public class DateFragment extends Fragment {
     private MonthAdapter monthAdapter;
     private WriteDialog dialog;
     private OnEventListener onEventListener;
+
+    private boolean isFirst = true;
+
+    private ArrayList<MonthVO> monthVOs = new ArrayList<>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDateBinding.inflate(LayoutInflater.from(getContext()), container, false);
@@ -31,43 +36,51 @@ public class DateFragment extends Fragment {
     }
 
     private void init(){
-        dialog = new WriteDialog(getContext());
+        monthVOs = ((MainActivity)getActivity()).monthItems;
         onEventListener = new OnEventListener() {
             @Override
-            public void onClick(Calendar day, int position, int month) {
+            public void onClick(Calendar day, int position, int month, int sta, String content) {
+                binding.dailyFeelingContainer.setVisibility(View.VISIBLE);
+                binding.day.setText(day.get(Calendar.DAY_OF_MONTH)+"일");
+                binding.contents.setText(content);
+                dialog = new WriteDialog(getContext(), sta, content);
+                /*
                 dialog.show();
                 dialog.setOnWriteDialogListener(new WriteDialog.OnWriteDialogListener() {
                     @Override
                     public void onResist(int status, String contents) {
                         for (int i = 0 ; i < monthAdapter.months.size(); i++) {
                             MonthVO monthVO = monthAdapter.months.get(i);
-                            Log.d("#######month1", monthVO.monthDate.getTime().getMonth()+"");
-                            Log.d("#######month2", month+"");
-                            Log.d("#######month1", monthVO.monthDate.get(Calendar.MONTH)+"");
                             if(monthVO.monthDate.getTime().getMonth() == month){
                                 monthAdapter.months.get(i).days.get(position).status = status;
+                                monthAdapter.months.get(i).days.get(position).content = contents;
+
                                 monthAdapter.notifyDataSetChanged();
+                                monthVOs = monthAdapter.months;
+                                binding.contents.setText(contents);
                             }
                         }
                     }
                 });
+                 */
             }
         };
         monthAdapter = new MonthAdapter(getContext(), onEventListener);
-
-
         binding.monthRecycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         binding.monthRecycler.setAdapter(monthAdapter);
-        MonthVO monthItem = new MonthVO();
-        monthItem.getDays();
-        monthAdapter.months.add(monthItem);
+        monthAdapter.months = monthVOs;
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        monthAdapter.notifyDataSetChanged();
+    }
 
-
-
-
-
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        binding.dailyFeelingContainer.setVisibility(View.GONE);
     }
 
     @Override

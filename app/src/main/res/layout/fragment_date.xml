@@ -63,6 +63,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/daily_feeling_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

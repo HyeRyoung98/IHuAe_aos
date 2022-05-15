@@ -20,6 +20,7 @@ public class WriteDialog extends Dialog {
     private EditText editText;
     private Button registBtn;
 
+    private String content = "";
     private int status = 0;
 
     private Context mContext;
@@ -32,9 +33,11 @@ public class WriteDialog extends Dialog {
         this.onWriteDialogListener = onWriteDialogListener;
     }
 
-    public WriteDialog(@NonNull Context context) {
+    public WriteDialog(@NonNull Context context, int status, String content) {
         super(context);
         this.mContext = context;
+        this.status = status;
+        this.content = content;
         setContentView(R.layout.dialog_write);
 
         this.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -59,6 +62,8 @@ public class WriteDialog extends Dialog {
         adapter = new FeelingStickerAdapter(mContext);
         stickerRecycler.setLayoutManager(new GridLayoutManager(mContext, 3));
         stickerRecycler.setAdapter(adapter);
+        adapter.sel_position = status;
+        editText.setText(content);
         adapter.setOnStickerClickListener(new FeelingStickerAdapter.OnStickerClickListener() {
             @Override
             public void onClick(int position) {

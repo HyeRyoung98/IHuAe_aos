@@ -16,6 +16,7 @@ public class DayVO {
      */
     public int status = 0;
     public int month = 0;
+    public String content = "";
     public Calendar today = new GregorianCalendar();
 
 }

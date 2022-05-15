@@ -50,7 +50,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.itemVH> {
 
         holder.binding.getRoot().setOnClickListener(view -> {
             if(onEventListener != null) {
-                onEventListener.onClick(day.today, holder.getLayoutPosition(), day.month);
+                onEventListener.onClick(day.today, holder.getLayoutPosition(), day.month, day.status, day.content);
             }
         });
     }

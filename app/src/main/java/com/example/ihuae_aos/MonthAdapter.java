@@ -38,8 +38,6 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.itemVH> {
         holder.dayAdapter.days.clear();
         holder.dayAdapter.days.addAll(month.days);
         holder.dayAdapter.notifyDataSetChanged();
-
-
     }
 
     @Override

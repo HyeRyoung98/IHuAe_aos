@@ -10,11 +10,15 @@ import com.example.ihuae_aos.databinding.ToolbarLayoutBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private MainPagerAdapter adapter;
+    public MainPagerAdapter adapter;
     private ToolbarLayoutBinding toolbar;
+    public ArrayList<MonthVO> monthItems = new ArrayList<>();
 
     private int tab_on_ic_ids[] = {R.drawable.tab_on_ic_home, R.drawable.tab_on_ic_date, R.drawable.tab_on_ic_edit, R.drawable.tab_on_ic_message};
     private int tab_off_ic_ids[] = {R.drawable.tab_off_ic_home, R.drawable.tab_off_ic_date, R.drawable.tab_off_ic_edit, R.drawable.tab_off_ic_message};
@@ -30,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
+        monthItems.clear();
+        for (int i = 0; i < 3; i++) {
+            MonthVO monthItem = new MonthVO();
+            monthItem.monthDate.add(Calendar.MONTH, i);
+            monthItem.getDays();
+            monthItems.add(monthItem);
+        }
+
+
         adapter = new MainPagerAdapter(this.getSupportFragmentManager(), getLifecycle());
         binding.viewPager2.setCurrentItem(0);
 
