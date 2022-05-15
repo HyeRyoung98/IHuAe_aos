@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="319dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingBottom="27dp">
+        <ImageView
+            android:id="@+id/write_dialog_cancel_button"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_cancel"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="31dp"
+            android:text="오늘의 기분을 기록해주세요"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/write_dialog_feeling_sticker_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="13dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="44dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="한마디로 표현하자면?"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/write_dialog_feeling_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:paddingStart="10dp"
+                android:hint="10자 이내로 작성해주세요. (생략가능)"
+                android:textSize="13dp"
+                android:singleLine="true"
+                android:maxLength="10"
+                android:textColor="@color/black"
+                android:background="@drawable/background_3_gray"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/write_dialog_regist_btn"
+            android:layout_width="205dp"
+            android:layout_height="41dp"
+            android:background="@drawable/background_5_gray"
+            android:backgroundTint="#F5F5F5"
+            android:text="등록하기"
+            android:textColor="#636363"
+            android:textSize="15dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
