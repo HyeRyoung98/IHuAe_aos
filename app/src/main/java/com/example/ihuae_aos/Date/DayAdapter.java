@@ -1,17 +1,15 @@
-package com.example.ihuae_aos;
+package com.example.ihuae_aos.Date;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ihuae_aos.Item.DayVO;
+import com.example.ihuae_aos.R;
 import com.example.ihuae_aos.databinding.DayItemBinding;
 
 import java.util.ArrayList;

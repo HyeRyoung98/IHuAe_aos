@@ -1,7 +1,6 @@
-package com.example.ihuae_aos;
+package com.example.ihuae_aos.Date;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ihuae_aos.MainActivity;
+import com.example.ihuae_aos.Home.WriteDialog;
 import com.example.ihuae_aos.databinding.FragmentDateBinding;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DateFragment extends Fragment {
@@ -21,8 +21,6 @@ public class DateFragment extends Fragment {
     private OnEventListener onEventListener;
 
     private boolean isFirst = true;
-
-    private ArrayList<MonthVO> monthVOs = new ArrayList<>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDateBinding.inflate(LayoutInflater.from(getContext()), container, false);
@@ -36,7 +34,6 @@ public class DateFragment extends Fragment {
     }
 
     private void init(){
-        monthVOs = ((MainActivity)getActivity()).monthItems;
         onEventListener = new OnEventListener() {
             @Override
             public void onClick(Calendar day, int position, int month, int sta, String content) {
@@ -68,7 +65,7 @@ public class DateFragment extends Fragment {
         monthAdapter = new MonthAdapter(getContext(), onEventListener);
         binding.monthRecycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         binding.monthRecycler.setAdapter(monthAdapter);
-        monthAdapter.months = monthVOs;
+        monthAdapter.months = ((MainActivity)getActivity()).monthItems;
     }
 
     @Override

@@ -5,6 +5,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.ihuae_aos.Date.DateFragment;
+import com.example.ihuae_aos.Edit.EditFragment;
+import com.example.ihuae_aos.Home.HomeFragment;
+import com.example.ihuae_aos.Message.MessageFragment;
+
 public class MainPagerAdapter extends FragmentStateAdapter {
 
     public MainPagerAdapter(FragmentManager fragmentManager, Lifecycle lifecycle) {

@@ -1,10 +1,9 @@
-package com.example.ihuae_aos;
+package com.example.ihuae_aos.Item;
 
-import android.util.Log;
+import com.example.ihuae_aos.Item.DayVO;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MonthVO {

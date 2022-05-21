@@ -1,4 +1,4 @@
-package com.example.ihuae_aos;
+package com.example.ihuae_aos.Home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,11 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.ihuae_aos.Item.DayVO;
+import com.example.ihuae_aos.MainActivity;
+import com.example.ihuae_aos.Item.MonthVO;
 import com.example.ihuae_aos.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class HomeFragment extends Fragment {

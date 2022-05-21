@@ -1,10 +1,9 @@
-package com.example.ihuae_aos;
+package com.example.ihuae_aos.Home;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +11,9 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ihuae_aos.Home.FeelingStickerAdapter;
+import com.example.ihuae_aos.R;
 
 public class WriteDialog extends Dialog {
     private ImageView cancelBtn;
