@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
             MonthVO monthVO = monthVOs.get(i);
             if(monthVO.monthDate.get(Calendar.MONTH)==date.get(Calendar.MONTH)){
                 for (int j = 0; j < monthVOs.get(i).days.size(); j++) {
-                    if(monthVOs.get(i).days.get(j).today.get(Calendar.DAY_OF_MONTH)==date.get(Calendar.DAY_OF_MONTH)){
+                    if(monthVOs.get(i).days.get(j).day==date.get(Calendar.DAY_OF_MONTH)){
                         dayVO = monthVOs.get(i).days.get(j);
 
                     }

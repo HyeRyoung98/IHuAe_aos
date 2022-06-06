@@ -1,7 +1,9 @@
 package com.example.ihuae_aos.Date;
 
+import com.example.ihuae_aos.Item.DayVO;
+
 import java.util.Calendar;
 
 public interface OnEventListener {
-  void onClick(Calendar day, int position, int month, int status, String content);
+  void onClick(DayVO dayVO, int position);
 }

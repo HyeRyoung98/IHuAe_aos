@@ -3,6 +3,7 @@ package com.example.ihuae_aos.Date;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -35,22 +36,29 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.itemVH> {
     @Override
     public void onBindViewHolder(@NonNull itemVH holder, int position) {
         DayVO day = days.get(holder.getLayoutPosition());
-        holder.binding.dayText.setText(day.today.get(Calendar.DAY_OF_MONTH)+"");
-        day.month = day.today.getTime().getMonth();
-        int textColor = day.status == 0 ? R.color.black : R.color.white;
-        int textStyle = day.status == 0 ? Typeface.NORMAL : Typeface.BOLD;
-        holder.binding.dayText.setTextColor(mContext.getColor(textColor));
-        holder.binding.dayText.setTypeface(null, textStyle);
 
-        int visible = day.status != 0 ? ViewGroup.VISIBLE : ViewGroup.INVISIBLE;
-        holder.binding.feelingSticker.setVisibility(visible);
-        holder.binding.feelingSticker.setColorFilter(mContext.getColor(setSticker(day.status)));
+        int visible1 = day.day == 0? View.INVISIBLE : View.VISIBLE;
+        holder.binding.rootContainer.setVisibility(visible1);
+        if(day.day!=0){
+            holder.binding.dayText.setText(day.day+"");
+            int textColor = day.status == 0 ? R.color.black : R.color.white;
+            int textStyle = day.status == 0 ? Typeface.NORMAL : Typeface.BOLD;
+            holder.binding.dayText.setTextColor(mContext.getColor(textColor));
+            holder.binding.dayText.setTypeface(null, textStyle);
 
-        holder.binding.getRoot().setOnClickListener(view -> {
-            if(onEventListener != null) {
-                onEventListener.onClick(day.today, holder.getLayoutPosition(), day.month, day.status, day.content);
-            }
-        });
+            int visible = day.status != 0 ? ViewGroup.VISIBLE : ViewGroup.INVISIBLE;
+            holder.binding.feelingSticker.setVisibility(visible);
+            holder.binding.feelingSticker.setColorFilter(mContext.getColor(setSticker(day.status)));
+
+            holder.binding.getRoot().setOnClickListener(view -> {
+                if(onEventListener != null) {
+                    onEventListener.onClick(day, holder.getLayoutPosition());
+                }
+            });
+        }
+
+
+
     }
 
     private int setSticker(int status){

@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
             android:paddingTop="9dp"
-
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/sun"
@@ -95,6 +94,7 @@
             android:id="@+id/day_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
             />
     </LinearLayout>
 

@@ -56,7 +56,7 @@ public class EditFragment extends Fragment {
         for (MonthVO month:((MainActivity)getActivity()).monthItems) {
             if(month.monthDate.get(Calendar.MONTH)==cal.get(Calendar.MONTH)){
                 for (int i = 0; i < month.days.size(); i++) {
-                    if(month.days.get(i).today.get(Calendar.DAY_OF_MONTH)==cal.get(Calendar.DAY_OF_MONTH)){
+                    if(month.days.get(i).day==cal.get(Calendar.DAY_OF_MONTH)){
                         weekAdapter.weekDays.clear();
                         for (int j = 0; j < 7; j++) {
                             weekAdapter.weekDays.add(month.days.get(i+j));

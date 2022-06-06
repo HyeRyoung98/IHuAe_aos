@@ -27,15 +27,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingHorizontal="25dp"
+                android:paddingHorizontal="5dp"
                 android:background="#EDEDED"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="21dp">
                 <ImageView
                     android:id="@+id/left_arr"
-                    android:layout_width="16dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="21dp"
-                    android:padding="5dp"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="15dp"
                     android:scaleType="center"
                     android:src="@drawable/ic_left_arr"/>
                 <TextView
@@ -44,15 +45,15 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="5월"
                     android:textStyle="bold"
                     android:textColor="@color/cal_month_color"
                     android:textSize="20dp"/>
                 <ImageView
                     android:id="@+id/right_arr"
-                    android:layout_width="16dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="21dp"
-                    android:padding="5dp"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="15dp"
                     android:scaleType="center"
                     android:src="@drawable/ic_right_arr"/>
             </LinearLayout>
@@ -60,7 +61,9 @@
                 android:id="@+id/month_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="10dp" />
 
             <LinearLayout
                 android:visibility="gone"

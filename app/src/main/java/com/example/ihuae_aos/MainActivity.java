@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     public MainPagerAdapter adapter;
     private ToolbarLayoutBinding toolbar;
-    public ArrayList<MonthVO> monthItems = new ArrayList<>();
+    public static ArrayList<MonthVO> monthItems = new ArrayList<>();
 
     private int tab_on_ic_ids[] = {R.drawable.tab_on_ic_home, R.drawable.tab_on_ic_date, R.drawable.tab_on_ic_edit, R.drawable.tab_on_ic_message};
     private int tab_off_ic_ids[] = {R.drawable.tab_off_ic_home, R.drawable.tab_off_ic_date, R.drawable.tab_off_ic_edit, R.drawable.tab_off_ic_message};
@@ -35,15 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        monthItems.clear();
-        for (int i = 0; i < 3; i++) {
-            MonthVO monthItem = new MonthVO();
-            monthItem.monthDate.add(Calendar.MONTH, i);
-            monthItem.getDays();
-            monthItems.add(monthItem);
-        }
-
-
+        createMonthItem();
         adapter = new MainPagerAdapter(this.getSupportFragmentManager(), getLifecycle());
         binding.viewPager2.setCurrentItem(0);
 
@@ -60,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
         }).attach();
 
 
+    }
+
+    private void createMonthItem(){
+        monthItems.clear();
+        for (int i = 0; i < 3; i++) {
+            MonthVO monthItem = new MonthVO();
+            monthItem.monthDate.add(Calendar.MONTH, i);
+            monthItem.Month = monthItem.monthDate.get(Calendar.MONTH)+1;
+            monthItem.getDays();
+            monthItems.add(monthItem);
+        }
     }
 
     private void eventHandler(){
