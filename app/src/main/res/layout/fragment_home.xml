@@ -31,13 +31,14 @@
                 android:paddingTop="41dp"
                 android:layout_marginBottom="26dp"
                 android:background="@drawable/background_cupcake">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="오늘은 좋아하는 걸\n적어본느 건 어때요?"
+                    android:text="오늘은 좋아하는 걸\n적어보는 건 어때요?"
                     android:textColor="@color/text_color_brown"
                     android:textSize="20dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"

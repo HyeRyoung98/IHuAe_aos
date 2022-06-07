@@ -13,6 +13,7 @@
     <color name="main_color_FFF3A0">#FFFFF3A0</color>
     <color name="text_color_brown">#FF847144</color>
     <color name="cal_month_color">#FF545454</color>
+    <color name="enable_font_gray">#FF999999</color>
     
     <!--status-->
     <color name="status_pleasure">#FFFFF3A0</color>

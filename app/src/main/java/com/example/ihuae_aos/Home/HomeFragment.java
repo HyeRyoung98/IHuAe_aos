@@ -36,7 +36,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void init(){
-        monthVOs = ((MainActivity)getActivity()).monthItems;
+        binding.dDay.setText("D+"+MainActivity.dDay);
+
+        monthVOs = MainActivity.monthItems;
         Calendar date = new GregorianCalendar();
         for (int i = 0; i < monthVOs.size(); i++) {
             MonthVO monthVO = monthVOs.get(i);
@@ -56,7 +58,6 @@ public class HomeFragment extends Fragment {
             public void onResist(int status, String contents) {
                 dayVO.status = status;
                 dayVO.content = contents;
-                //((MainActivity)getActivity()).adapter.notifyDataSetChanged();
             }
         });
         binding.writeBtn.setOnClickListener(v -> {

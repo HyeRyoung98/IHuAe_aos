@@ -1,6 +1,9 @@
 package com.example.ihuae_aos.Item;
 
+import android.util.Log;
+
 import com.example.ihuae_aos.Item.DayVO;
+import com.example.ihuae_aos.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -9,13 +12,16 @@ import java.util.GregorianCalendar;
 
 public class MonthVO {
     public MonthVO(){}
-
+    private ArrayList<String> queses = new ArrayList<>();
 
     public Calendar monthDate = new GregorianCalendar();
     public int Month = 0;
 
     public ArrayList<DayVO> days = new ArrayList<>();
     public void getDays(){
+        for(int k = 0; k <100; k++){
+            queses.add("질문"+k);
+        }
         int lastDay = monthDate.getActualMaximum(Calendar.DAY_OF_MONTH);
         int year = monthDate.get(Calendar.YEAR);
         int month = monthDate.get(Calendar.MONTH);
@@ -37,7 +43,15 @@ public class MonthVO {
             day.month = month;
             day.day = j;
             day.today.set(year, month, j, 0, 0,0);
-            day.week = day.today.get(Calendar.DAY_OF_WEEK);
+            Log.d("#########tf start", String.valueOf(MainActivity.startCal.after(day.today)));
+            Log.d("#########tf end", String.valueOf(MainActivity.endCal.before(day.today)));
+            if(MainActivity.startCal.before(day.today)&&MainActivity.endCal.after(day.today)){
+                day.isEnable = true;
+            }else{
+                day.isEnable = false;
+            }
+            //day.week = day.today.get(Calendar.DAY_OF_WEEK);
+            day.ques = queses.get(j);
             days.add(day);
         }
     }

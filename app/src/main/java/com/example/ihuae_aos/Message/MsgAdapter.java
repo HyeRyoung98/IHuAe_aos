@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ihuae_aos.Item.MsgItem;
 import com.example.ihuae_aos.databinding.MsgItemBinding;
 
 import java.util.ArrayList;
 
 public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.itemVH> {
 
-    public ArrayList<String> msgItems = new ArrayList<>();
+    public ArrayList<MsgItem> msgItems = new ArrayList<>();
 
     private Context mContext;
     public MsgAdapter(Context context){
@@ -29,7 +30,8 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.itemVH> {
 
     @Override
     public void onBindViewHolder(@NonNull MsgAdapter.itemVH holder, int position) {
-        holder.binding.msgTxt.setText(msgItems.get(position));
+        MsgItem msg = msgItems.get(position);
+        holder.binding.msgTxt.setText(msg.msg);
     }
 
     @Override

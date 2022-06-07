@@ -10,8 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ihuae_aos.Item.MsgItem;
 import com.example.ihuae_aos.databinding.FragmentEditBinding;
 import com.example.ihuae_aos.databinding.FragmentMassageBinding;
+
+import java.util.Calendar;
 
 public class MessageFragment extends Fragment {
     private FragmentMassageBinding binding;
@@ -29,6 +32,9 @@ public class MessageFragment extends Fragment {
         init();
         eventHandler();
     }
+    private void getData(){
+
+    }
 
     private void init(){
         adapter = new MsgAdapter(getContext());
@@ -41,18 +47,24 @@ public class MessageFragment extends Fragment {
         binding.sendMsg.setOnClickListener(view -> {
             String msg = binding.editMsg.getText().toString().trim();
             if(!msg.isEmpty()){
-                adapter.msgItems.add(msg);
+                MsgItem msgItem = new MsgItem();
+                msgItem.msg = msg;
+                msgItem.created_at = Calendar.getInstance();
+                adapter.msgItems.add(msgItem);
                 adapter.notifyDataSetChanged();
                 binding.editMsg.setText(null);
+                binding.msgRecycler.scrollToPosition(adapter.msgItems.size()-1);
             }else{
                 Toast.makeText(getContext(), "메세지를 입력해주세요.", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //todo sharedpreferences 저장
         binding = null;
     }
 }

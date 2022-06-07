@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ihuae_aos.Item.DayVO;
+import com.example.ihuae_aos.R;
 import com.example.ihuae_aos.databinding.WeekItemBinding;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.itemVH> {
 
     public OnWeekListener onWeekListener;
     public interface OnWeekListener{
-        void onClick(ArrayList<String> diaries);
+        void onClick(int position);
     }
     public void setOnWeekListener(OnWeekListener onWeekListener){
         this.onWeekListener = onWeekListener;
@@ -39,9 +40,13 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.itemVH> {
 
     @Override
     public void onBindViewHolder(@NonNull WeekAdapter.itemVH holder, int position) {
-        holder.binding.weekText.setText(weekDays.get(position).today.get(Calendar.DAY_OF_MONTH)+"");
+        DayVO day = weekDays.get(position);
+        holder.binding.weekText.setText(day.day+"");
+        holder.itemView.setEnabled(day.isEnable);
+        int textColor = day.isEnable? R.color.black : R.color.enable_font_gray;
+        holder.binding.weekText.setTextColor(mContext.getColor(textColor));
         holder.binding.getRoot().setOnClickListener(view -> {
-            if(onWeekListener!=null) onWeekListener.onClick(weekDays.get(holder.getPosition()).diaries);
+            if(onWeekListener!=null) onWeekListener.onClick(holder.getAdapterPosition());
         });
     }
 

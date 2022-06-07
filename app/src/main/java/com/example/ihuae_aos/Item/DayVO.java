@@ -15,13 +15,17 @@ public class DayVO {
      *  3 화남
      *  4 그저그럼
      */
-    public int status = 0;
+
     public int year = 0;
     public int month = 0;
     public int day = 0;
-    public int week = 0;
-    public String content = "";
     public Calendar today = new GregorianCalendar();
-    public ArrayList<String> diaries = new ArrayList<>();
 
+    public int status = 0;
+    public String content = "";
+    public boolean isEnable = true;
+
+    public String ques = "";
+    public String ans = "";
+    public ArrayList<String> diaries = new ArrayList<>();
 }

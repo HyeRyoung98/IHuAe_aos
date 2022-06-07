@@ -3,6 +3,7 @@ package com.example.ihuae_aos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import com.example.ihuae_aos.Item.MonthVO;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     public MainPagerAdapter adapter;
     private ToolbarLayoutBinding toolbar;
     public static ArrayList<MonthVO> monthItems = new ArrayList<>();
+    public static int dDay = 0;
+    public static Calendar startCal;
+    public static Calendar endCal;
 
     private int tab_on_ic_ids[] = {R.drawable.tab_on_ic_home, R.drawable.tab_on_ic_date, R.drawable.tab_on_ic_edit, R.drawable.tab_on_ic_message};
     private int tab_off_ic_ids[] = {R.drawable.tab_off_ic_home, R.drawable.tab_off_ic_date, R.drawable.tab_off_ic_edit, R.drawable.tab_off_ic_message};
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         createMonthItem();
+
         adapter = new MainPagerAdapter(this.getSupportFragmentManager(), getLifecycle());
         binding.viewPager2.setCurrentItem(0);
 
@@ -50,19 +55,32 @@ public class MainActivity extends AppCompatActivity {
                 else tab.setIcon(tab_off_ic_ids[position]);
             }
         }).attach();
-
-
     }
 
     private void createMonthItem(){
+        startCal = Calendar.getInstance();
+        endCal = Calendar.getInstance();
+        initCal(startCal);
+        initCal(endCal);
+        endCal.add(Calendar.DAY_OF_MONTH, 100);
+        Log.d("######Cal start", startCal.getTime().toString());
+        Log.d("######Cal end", endCal.getTime().toString());
+        dDay = 1;
         monthItems.clear();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < endCal.get(Calendar.MONTH)-startCal.get(Calendar.MONTH)+1; i++) {
             MonthVO monthItem = new MonthVO();
             monthItem.monthDate.add(Calendar.MONTH, i);
             monthItem.Month = monthItem.monthDate.get(Calendar.MONTH)+1;
             monthItem.getDays();
             monthItems.add(monthItem);
         }
+    }
+
+    private void initCal(Calendar cal){
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
     }
 
     private void eventHandler(){

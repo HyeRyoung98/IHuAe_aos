@@ -2,6 +2,7 @@ package com.example.ihuae_aos.Date;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,14 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.itemVH> {
         int visible1 = day.day == 0? View.INVISIBLE : View.VISIBLE;
         holder.binding.rootContainer.setVisibility(visible1);
         if(day.day!=0){
+            holder.itemView.setEnabled(day.isEnable);
             holder.binding.dayText.setText(day.day+"");
-            int textColor = day.status == 0 ? R.color.black : R.color.white;
+            int textColor;
+            if(day.isEnable){
+                textColor = day.status == 0 ? R.color.black : R.color.white;
+            }else{
+                textColor = R.color.enable_font_gray;
+            }
             int textStyle = day.status == 0 ? Typeface.NORMAL : Typeface.BOLD;
             holder.binding.dayText.setTextColor(mContext.getColor(textColor));
             holder.binding.dayText.setTypeface(null, textStyle);

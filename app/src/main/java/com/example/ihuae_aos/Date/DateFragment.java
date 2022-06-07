@@ -39,6 +39,8 @@ public class DateFragment extends Fragment {
     }
 
     private void init(){
+        binding.dDay.setText("D+"+MainActivity.dDay);
+
         onEventListener = new OnEventListener() {
             @Override
             public void onClick(DayVO dayVO, int position) {
@@ -47,29 +49,30 @@ public class DateFragment extends Fragment {
                 binding.contents.setText(dayVO.content);
             }
         };
+
         monthAdapter = new MonthAdapter(getContext(), onEventListener);
         LinearLayoutManager lm = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false){
             @Override
             public boolean canScrollHorizontally() {
                 return false;
-                //return super.canScrollHorizontally();
             }
 
             @Override
             public boolean canScrollVertically() {
                 return false;
-                //return super.canScrollVertically();
             }
         };
         binding.monthRecycler.setLayoutManager(lm);
         binding.monthRecycler.setAdapter(monthAdapter);
 
-        monthAdapter.months = ((MainActivity)getActivity()).monthItems;
+        monthAdapter.months = MainActivity.monthItems;
         prePos = getThisMonthPosition();
         setMonthCal();
     }
 
     private void eventHandler(){
+
+
         binding.leftArr.setOnClickListener(view -> {
             if(prePos>0){
                 prePos = prePos-1;
@@ -81,7 +84,7 @@ public class DateFragment extends Fragment {
         });
 
         binding.rightArr.setOnClickListener(view -> {
-            if(prePos<2){
+            if(prePos<monthAdapter.months.size()-1){
                 prePos = prePos+1;
                 setMonthCal();
                 binding.dailyFeelingContainer.setVisibility(View.GONE);

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="319dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp"
+    tools:viewBindingIgnore="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="27dp">
+        <ImageView
+            android:id="@+id/dairy_dialog_cancel_btn"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_cancel"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="15dp"
+            android:text="오늘을 기록해보세요."
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/dairy_dialog_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="start"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="25dp"
+            android:padding="10dp"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:background="@drawable/background_3_gray"
+            android:scrollbars="none"/>
+
+        <Button
+            android:id="@+id/dairy_dialog_resist_btn"
+            android:layout_width="205dp"
+            android:layout_height="41dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/background_5_gray"
+            android:backgroundTint="#F5F5F5"
+            android:text="등록하기"
+            android:textColor="#636363"
+            android:textSize="15dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
