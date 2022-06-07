@@ -28,4 +28,20 @@ public class DayVO {
     public String ques = "";
     public String ans = "";
     public ArrayList<String> diaries = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "DayVO{" +
+                "year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", today=" + today +
+                ", status=" + status +
+                ", content='" + content + '\'' +
+                ", isEnable=" + isEnable +
+                ", ques='" + ques + '\'' +
+                ", ans='" + ans + '\'' +
+                ", diaries=" + diaries +
+                '}';
+    }
 }

@@ -102,7 +102,7 @@ public class DateFragment extends Fragment {
             if(month.Month==cal.get(Calendar.MONTH)+1) return i;
             i++;
         }
-        return 2;
+        return monthAdapter.months.size()-1;
     }
 
     private void setMonthCal(){

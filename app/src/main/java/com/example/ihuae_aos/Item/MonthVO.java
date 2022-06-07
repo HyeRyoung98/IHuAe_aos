@@ -16,8 +16,9 @@ public class MonthVO {
 
     public Calendar monthDate = new GregorianCalendar();
     public int Month = 0;
-
     public ArrayList<DayVO> days = new ArrayList<>();
+
+
     public void getDays(){
         for(int k = 0; k <100; k++){
             queses.add("질문"+k);
@@ -43,8 +44,7 @@ public class MonthVO {
             day.month = month;
             day.day = j;
             day.today.set(year, month, j, 0, 0,0);
-            Log.d("#########tf start", String.valueOf(MainActivity.startCal.after(day.today)));
-            Log.d("#########tf end", String.valueOf(MainActivity.endCal.before(day.today)));
+
             if(MainActivity.startCal.before(day.today)&&MainActivity.endCal.after(day.today)){
                 day.isEnable = true;
             }else{
@@ -56,5 +56,11 @@ public class MonthVO {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "MonthVO{" +
+                ", Month=" + Month +
+                //", days=" + days +
+                '}';
+    }
 }

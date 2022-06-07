@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ihuae_aos.Item.MsgItem;
+import com.example.ihuae_aos.MainActivity;
 import com.example.ihuae_aos.databinding.FragmentEditBinding;
 import com.example.ihuae_aos.databinding.FragmentMassageBinding;
 
@@ -32,15 +33,13 @@ public class MessageFragment extends Fragment {
         init();
         eventHandler();
     }
-    private void getData(){
-
-    }
 
     private void init(){
         adapter = new MsgAdapter(getContext());
         binding.msgRecycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.msgRecycler.setAdapter(adapter);
         adapter.msgItems.clear();
+        adapter.msgItems.addAll(MainActivity.msgItems);
     }
 
     private void eventHandler(){
@@ -65,6 +64,7 @@ public class MessageFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         //todo sharedpreferences 저장
+        MainActivity.msgItems.addAll(adapter.msgItems);
         binding = null;
     }
 }
