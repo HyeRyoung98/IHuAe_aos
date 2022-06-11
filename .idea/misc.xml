@@ -6,6 +6,7 @@
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/drawable/background_3_gray.xml" value="0.205" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/drawable/background_5_gray.xml" value="0.205" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/drawable/background_5_stroke_1_gray.xml" value="0.172" />
+        <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/drawable/background_gray_15.xml" value="0.1985" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/drawable/background_sticker_selector.xml" value="0.205" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/drawable/background_tab_layout.xml" value="0.2135" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/activity_main.xml" value="0.17883211678832117" />
@@ -14,15 +15,17 @@
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/day_item.xml" value="0.4" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/day_of_week_text_item.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/dialog_diary.xml" value="0.264" />
+        <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/dialog_guide_card.xml" value="0.264" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/dialog_write.xml" value="0.4" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/feeling_sticker_item.xml" value="0.4" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/fragment_date.xml" value="0.4" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/fragment_edit.xml" value="0.2" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/fragment_home.xml" value="0.28125" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/fragment_massage.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/guide_card_item.xml" value="0.176" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/monthly_item.xml" value="0.4" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/msg_item.xml" value="0.264" />
-        <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/q_n_a_item.xml" value="0.20820863616930313" />
+        <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/q_n_a_item.xml" value="0.6" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/toolbar_layout.xml" value="0.4" />
         <entry key="..\:/Users/khr/AndroidStudioProjects/IHuAe_aos/app/src/main/res/layout/week_item.xml" value="0.20820863616930313" />
       </map>

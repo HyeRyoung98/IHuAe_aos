@@ -22,6 +22,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private WriteDialog dialog;
+    private GuideCardDialog cardDialog;
     private QNAAdapter qnaAdapter;
     private ArrayList<MonthVO> monthVOs = new ArrayList<>();
     private DayVO dayVO = new DayVO();
@@ -81,6 +82,14 @@ public class HomeFragment extends Fragment {
             }
         }
         binding.todayQNARecycler.scrollToPosition(MainActivity.dDay-1);
+
+        cardDialog = new GuideCardDialog(getContext());
+        MainActivity.onFolderClickListener = new OnFolderClickListener() {
+            @Override
+            public void onClick() {
+                cardDialog.show();
+            }
+        };
 
     }
 

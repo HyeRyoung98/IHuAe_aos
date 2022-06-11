@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
+import com.example.ihuae_aos.Home.OnFolderClickListener;
 import com.example.ihuae_aos.Item.MonthVO;
 import com.example.ihuae_aos.Item.MsgItem;
 import com.example.ihuae_aos.Util.SharedPreferencesManager;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public static int dDay = 0;
     public static Calendar startCal = Calendar.getInstance();
     public static Calendar endCal = Calendar.getInstance();
+    public static OnFolderClickListener onFolderClickListener;
 
     private int tab_on_ic_ids[] = {R.drawable.tab_on_ic_home, R.drawable.tab_on_ic_date, R.drawable.tab_on_ic_edit, R.drawable.tab_on_ic_message};
     private int tab_off_ic_ids[] = {R.drawable.tab_off_ic_home, R.drawable.tab_off_ic_date, R.drawable.tab_off_ic_edit, R.drawable.tab_off_ic_message};
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         toolbar.folderIcon.setOnClickListener(view -> {
-
+            if(onFolderClickListener!=null) onFolderClickListener.onClick();
         });
 
         binding.tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
