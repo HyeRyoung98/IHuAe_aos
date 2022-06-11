@@ -39,35 +39,35 @@ public class SharedPreferencesManager {
     public static void setMonthItem(Context context, ArrayList<MonthVO> monthItems){
         SharedPreferences prefs = getPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
-        JSONArray jsonArray = new JSONArray();
+
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < monthItems.size(); i++) {
-            jsonArray.put(monthItems.get(i));
+            MonthVO monthVO = monthItems.get(i);
+            Gson gson = new Gson();
+            String json = gson.toJson(monthVO);
+            sb.append(json);
+            if(i!=monthItems.size()-1) sb.append("JFin");
         }
-        Log.d("#####shared json", jsonArray.toString());
-        editor.putString("monthItems", jsonArray.toString());
+        editor.putString("monthItems", sb.toString());
+
         editor.apply();
     }
 
     public static ArrayList<MonthVO> getMonthItem(Context context){
         SharedPreferences prefs = getPreferences(context);
-        String json = prefs.getString("monthItems", "");
-        Log.d("#####Json", json);
         ArrayList<MonthVO> monthItems = new ArrayList<>();
         monthItems.clear();
-        if(!json.isEmpty()){
-            try {
-                //JSONObject obj = new JSONObject(json);
-                JSONArray jsonArray = new JSONArray(json);
-                Log.d("###########ja", jsonArray.toString());
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    MonthVO monthVO = GsonUtil.getCustomGson().fromJson(jsonArray.getJSONObject(i).toString(), MonthVO.class);
-                    Log.d("################monthVO", monthVO.toString());
-                    monthItems.add(monthVO);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
+        String sb = prefs.getString("monthItems", "");
+        if(!sb.isEmpty()){
+            String[] lis = sb.split("JFin");
+
+            for (int i = 0; i < lis.length; i++) {
+                String json = lis[i];
+                Gson gson = new Gson();
+                MonthVO monthVO = gson.fromJson(json, MonthVO.class);
+                monthItems.add(monthVO);
+            }
         }
         return monthItems;
     }
@@ -93,6 +93,7 @@ public class SharedPreferencesManager {
                 e.printStackTrace();
             }
             calendar.setTime(date);
+            Log.d("############cal", calendar.getTime().toString());
             return calendar;
         }else{
             return null;
@@ -103,61 +104,35 @@ public class SharedPreferencesManager {
     public static void setMsgItem(Context context, ArrayList<MsgItem> msgItems){
         SharedPreferences prefs = getPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
-        JSONArray jsonArray = new JSONArray();
+
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < msgItems.size(); i++) {
-            jsonArray.put(msgItems.get(i));
+            MsgItem msg = msgItems.get(i);
+            Gson gson = new Gson();
+            String json = gson.toJson(msg);
+            sb.append(json);
+            if(i!=msgItems.size()-1) sb.append("JFin");
         }
-        editor.putString("msgItems", jsonArray.toString());
+        editor.putString("msgItems", sb.toString());
         editor.apply();
     }
 
     public static ArrayList<MsgItem> getMsgItem(Context context){
         SharedPreferences prefs = getPreferences(context);
-        String json = prefs.getString("msgItems", "");
         ArrayList<MsgItem> msgItems = new ArrayList<>();
         msgItems.clear();
-        if(!json.isEmpty()){
-            try {
-                JSONArray jsonArray = new JSONArray(json);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    MsgItem msgItem = GsonUtil.getCustomGson().fromJson(jsonArray.getJSONObject(i).toString(), MsgItem.class);
-                    msgItems.add(msgItem);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
+        String sb = prefs.getString("msgItems", "");
+        if(!sb.isEmpty()){
+            String[] lis = sb.split("JFin");
+            for (int i = 0; i < lis.length; i++) {
+                String json = lis[i];
+                Gson gson = new Gson();
+                MsgItem msg = gson.fromJson(json, MsgItem.class);
+                msgItems.add(msg);
+            }
         }
+
         return msgItems;
     }
-
-
-    /*
-        public static void setEndCal(Context context, Calendar endCal){
-        SharedPreferences prefs = getPreferences(context);
-        SharedPreferences.Editor editor = prefs.edit();
-        String cal = sdf.format(endCal.getTime());
-        editor.putString("endCal", cal);
-        editor.apply();
-    }
-
-    public static Calendar getEndCal(Context context){
-        SharedPreferences prefs = getPreferences(context);
-        Calendar endCal = Calendar.getInstance();
-        String cal = prefs.getString("endCal", "");
-        if(!cal.isEmpty()){
-            Date date = null;
-            try {
-                date = sdf.parse(cal);
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            endCal.setTime(date);
-        }else{
-            endCal.set(0,0,0,0,0,0);
-        }
-        return endCal;
-    }
-     */
 }

@@ -31,7 +31,7 @@ public class DayVO {
 
     @Override
     public String toString() {
-        return "DayVO{" +
+        return "{" +
                 "year=" + year +
                 ", month=" + month +
                 ", day=" + day +
@@ -44,4 +44,6 @@ public class DayVO {
                 ", diaries=" + diaries +
                 '}';
     }
+
+
 }

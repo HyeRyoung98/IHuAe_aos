@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         endCal.add(Calendar.DAY_OF_MONTH, 100);
 
         dDay = 1;
+        //calDDay();
         monthItems.clear();
         for (int i = 0; i < endCal.get(Calendar.MONTH)-startCal.get(Calendar.MONTH)+1; i++) {
             MonthVO monthItem = new MonthVO();
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         long today = todayCal.getTimeInMillis()/86400000; //->(24 * 60 * 60 * 1000) 24시간 60분 60초 * (ms초->초 변환 1000)
         long startDay = startCal.getTimeInMillis()/86400000;
         long count = today - startDay; // 오늘 날짜에서 dday 날짜를 빼주게 됩니다.
-        dDay = (int) count;
+        dDay = (int) count + 1;
         Log.d("######dDay", dDay+"//");
     }
 

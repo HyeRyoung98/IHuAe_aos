@@ -40,6 +40,7 @@ public class MessageFragment extends Fragment {
         binding.msgRecycler.setAdapter(adapter);
         adapter.msgItems.clear();
         adapter.msgItems.addAll(MainActivity.msgItems);
+        binding.msgRecycler.scrollToPosition(adapter.msgItems.size()-1);
     }
 
     private void eventHandler(){
@@ -63,7 +64,6 @@ public class MessageFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //todo sharedpreferences 저장
         MainActivity.msgItems.addAll(adapter.msgItems);
         binding = null;
     }

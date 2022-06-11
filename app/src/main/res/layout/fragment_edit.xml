@@ -73,7 +73,7 @@
                     android:id="@+id/today_ans"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="답변을 입력해보세요"
+                    android:hint="아직 답변이 없습니다."
                     android:textSize="14dp"
                     android:textColor="#4A4A4A"
                     android:background="#00000000"/>
