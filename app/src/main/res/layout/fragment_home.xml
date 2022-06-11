@@ -90,6 +90,7 @@
                 android:textColor="@color/text_color_brown"
                 />
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/today_q_n_a_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="95dp"/>
         </LinearLayout>

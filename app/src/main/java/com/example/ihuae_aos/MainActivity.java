@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewTreeObserver;
 
 import com.example.ihuae_aos.Item.MonthVO;
 import com.example.ihuae_aos.Item.MsgItem;
@@ -48,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         }else{
             calDDay();
         }
-        Log.d("##############month", monthItems.toString());
 
         adapter = new MainPagerAdapter(this.getSupportFragmentManager(), getLifecycle());
         binding.viewPager2.setCurrentItem(0);
@@ -72,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         endCal.add(Calendar.DAY_OF_MONTH, 100);
 
         dDay = 1;
-        //calDDay();
         monthItems.clear();
         for (int i = 0; i < endCal.get(Calendar.MONTH)-startCal.get(Calendar.MONTH)+1; i++) {
             MonthVO monthItem = new MonthVO();
@@ -84,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void eventHandler(){
+
+        binding.viewPager2.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if(binding.viewPager2.getCurrentItem()==0) toolbar.folderIcon.setVisibility(View.VISIBLE);
+                else toolbar.folderIcon.setVisibility(View.GONE);
+            }
+        });
+
         toolbar.folderIcon.setOnClickListener(view -> {
 
         });
@@ -121,13 +130,9 @@ public class MainActivity extends AppCompatActivity {
         long startDay = startCal.getTimeInMillis()/86400000;
         long count = today - startDay; // 오늘 날짜에서 dday 날짜를 빼주게 됩니다.
         dDay = (int) count + 1;
-        Log.d("######dDay", dDay+"//");
     }
 
     private void saveData(){
-        Log.d("###########monthITem", monthItems.toString());
-        Log.d("############start", startCal.getTime().toString());
-        Log.d("##########msg", msgItems.toString());
         SharedPreferencesManager.setMonthItem(this, monthItems);
         SharedPreferencesManager.setCal(this, startCal, "startCal");
         SharedPreferencesManager.setCal(this, endCal, "endCal");

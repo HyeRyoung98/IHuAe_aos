@@ -1,18 +1,14 @@
 package com.example.ihuae_aos.Item;
 
-import android.util.Log;
-
-import com.example.ihuae_aos.Item.DayVO;
 import com.example.ihuae_aos.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MonthVO {
     public MonthVO(){}
-    private ArrayList<String> queses = new ArrayList<>();
+    //private ArrayList<String> queses = new ArrayList<>();
 
     public Calendar monthDate = new GregorianCalendar();
     public int Month = 0;
@@ -20,9 +16,7 @@ public class MonthVO {
 
 
     public void getDays(){
-        for(int k = 0; k <100; k++){
-            queses.add("질문"+k);
-        }
+
         int lastDay = monthDate.getActualMaximum(Calendar.DAY_OF_MONTH);
         int year = monthDate.get(Calendar.YEAR);
         int month = monthDate.get(Calendar.MONTH);
@@ -51,7 +45,8 @@ public class MonthVO {
                 day.isEnable = false;
             }
             //day.week = day.today.get(Calendar.DAY_OF_WEEK);
-            day.ques = queses.get(j);
+            day.ques = month+1 +"월"+j+ "일의 질문";
+            //day.ques = queses.get(j);
             days.add(day);
         }
     }
@@ -60,7 +55,6 @@ public class MonthVO {
     @Override
     public String toString() {
         return "{" +
-                "queses=" + queses +
                 ", monthDate=" + monthDate +
                 ", Month=" + Month +
                 ", days=" + days +

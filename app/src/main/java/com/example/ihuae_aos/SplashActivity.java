@@ -53,12 +53,8 @@ public class SplashActivity extends AppCompatActivity {
 
     private void getData(){
         getCal();
-
         MainActivity.monthItems = SharedPreferencesManager.getMonthItem(this);
         MainActivity.msgItems = SharedPreferencesManager.getMsgItem(this);
-
-        Log.d("##################sharemonth", SharedPreferencesManager.getMonthItem(this).toString());
-
     }
 
     private void getCal(){

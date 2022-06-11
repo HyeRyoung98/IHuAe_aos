@@ -93,7 +93,6 @@ public class SharedPreferencesManager {
                 e.printStackTrace();
             }
             calendar.setTime(date);
-            Log.d("############cal", calendar.getTime().toString());
             return calendar;
         }else{
             return null;
@@ -120,6 +119,8 @@ public class SharedPreferencesManager {
     public static ArrayList<MsgItem> getMsgItem(Context context){
         SharedPreferences prefs = getPreferences(context);
         ArrayList<MsgItem> msgItems = new ArrayList<>();
+        Calendar yesterday = Calendar.getInstance();
+        yesterday.add(Calendar.DAY_OF_MONTH, -1);
         msgItems.clear();
 
         String sb = prefs.getString("msgItems", "");
@@ -129,7 +130,8 @@ public class SharedPreferencesManager {
                 String json = lis[i];
                 Gson gson = new Gson();
                 MsgItem msg = gson.fromJson(json, MsgItem.class);
-                msgItems.add(msg);
+
+                if(msg.created_at.after(yesterday)) msgItems.add(msg);
             }
         }
 

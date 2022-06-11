@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.ihuae_aos.Item.DayVO;
 import com.example.ihuae_aos.MainActivity;
 import com.example.ihuae_aos.Item.MonthVO;
 import com.example.ihuae_aos.databinding.FragmentHomeBinding;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -20,6 +22,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private WriteDialog dialog;
+    private QNAAdapter qnaAdapter;
     private ArrayList<MonthVO> monthVOs = new ArrayList<>();
     private DayVO dayVO = new DayVO();
 
@@ -63,6 +66,22 @@ public class HomeFragment extends Fragment {
         binding.writeBtn.setOnClickListener(v -> {
             dialog.show();
         });
+
+        qnaAdapter = new QNAAdapter(getContext());
+        binding.todayQNARecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        binding.todayQNARecycler.setAdapter(qnaAdapter);
+        qnaAdapter.ques.clear();
+        for (int i = 0; i < MainActivity.monthItems.size(); i++) {
+            MonthVO month = MainActivity.monthItems.get(i);
+            for (int j = 0; j < month.days.size(); j++) {
+                DayVO day = month.days.get(j);
+                if(day.isEnable){
+                    qnaAdapter.ques.add(day.ques);
+                }
+            }
+        }
+        binding.todayQNARecycler.scrollToPosition(MainActivity.dDay-1);
+
     }
 
     @Override

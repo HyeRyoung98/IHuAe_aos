@@ -2,7 +2,6 @@ package com.example.ihuae_aos.Item;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DayVO {
@@ -23,7 +22,7 @@ public class DayVO {
 
     public int status = 0;
     public String content = "";
-    public boolean isEnable = true;
+    public boolean isEnable = false;
 
     public String ques = "";
     public String ans = "";
