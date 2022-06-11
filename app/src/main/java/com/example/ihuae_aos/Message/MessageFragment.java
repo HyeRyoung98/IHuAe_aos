@@ -1,9 +1,13 @@
 package com.example.ihuae_aos.Message;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ihuae_aos.Item.MsgItem;
 import com.example.ihuae_aos.MainActivity;
-import com.example.ihuae_aos.databinding.FragmentEditBinding;
 import com.example.ihuae_aos.databinding.FragmentMassageBinding;
 
 import java.util.Calendar;
@@ -59,6 +62,13 @@ public class MessageFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        InputMethodManager imm = (InputMethodManager)getContext().getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(binding.editMsg.getWindowToken(), 0);
     }
 
     @Override
