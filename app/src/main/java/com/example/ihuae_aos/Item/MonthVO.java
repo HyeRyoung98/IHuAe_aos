@@ -38,10 +38,15 @@ public class MonthVO {
             day.month = month;
             day.day = j;
             day.today.set(year, month, j, 0, 0,0);
+            boolean sameDay = MainActivity.startCal.get(Calendar.MONTH)==day.today.get(Calendar.MONTH)
+                    &&MainActivity.startCal.get(Calendar.DAY_OF_MONTH)==day.today.get(Calendar.DAY_OF_MONTH);
 
             if(MainActivity.startCal.before(day.today)&&MainActivity.endCal.after(day.today)){
                 day.isEnable = true;
-            }else{
+            } else if(sameDay){
+                day.isEnable = true;
+            }
+            else{
                 day.isEnable = false;
             }
             //day.week = day.today.get(Calendar.DAY_OF_WEEK);
